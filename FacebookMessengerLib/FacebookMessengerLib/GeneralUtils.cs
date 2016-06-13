@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace FacebookMessengerLib
 {
+    /// <summary>
+    /// General methods for work with API
+    /// Contains not specific oriented methods
+    /// </summary>
     public class GeneralUtils
     {
         private string _baseUrl = "";
