@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FacebookMessengerLib.API.Types;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +27,7 @@ namespace FacebookMessengerLib
 
         //TODO: Use ApiResponse.Result as returned type
         //Use custom types in operations
-        public async Task<string> SendWebRequestAsync(string method, Dictionary<string, object> parameters = null)
+        public async Task<T> SendWebRequestAsync<T>(string method, Dictionary<string, object> parameters = null)
         {
             try
             {
@@ -43,11 +44,15 @@ namespace FacebookMessengerLib
 
                 var response = (HttpWebResponse)(await request.GetResponseAsync());
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                return responseString;
+                var responseObject = JsonConvert.DeserializeObject<ApiResponse<T>>(responseString);
+                
+                return responseObject.Result;
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
-                return e.Message;
+                if (e.Message.Contains("400"))
+                    throw new ApiError("Bad Request", 400);
+                else throw;
             }
         }
     }

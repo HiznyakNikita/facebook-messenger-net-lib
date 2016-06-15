@@ -11,7 +11,7 @@ namespace FacebookMessengerLib.API.Types
     /// Specify error type of API
     /// </summary>
     [JsonObject]
-    public class ApiError
+    public class ApiError : Exception
     {
         [JsonProperty(PropertyName = "message", Required = Required.Always)]
         public string Message { get; internal set; }
@@ -19,5 +19,15 @@ namespace FacebookMessengerLib.API.Types
         public string Type { get; internal set; }
         [JsonProperty(PropertyName = "code", Required = Required.Always)]
         public int Code { get; internal set; }
+
+        public ApiError()
+        {
+        }
+
+        public ApiError(string message, int code)
+        {
+            Message = message;
+            Code = code;
+        }
     }
 }

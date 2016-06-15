@@ -47,6 +47,21 @@
     <Compile Include="API.Exceptions\ApiRequestException.cs" />
     <Compile Include="API.Types\ApiError.cs" />
     <Compile Include="API.Types\ApiResponse.cs" />
+    <Compile Include="API.Types\Attachments\Attachment.cs" />
+    <Compile Include="API.Types\Attachments\Abstract\IPayload.cs" />
+    <Compile Include="API.Types\Attachments\ButtonTemplate.cs" />
+    <Compile Include="API.Types\Attachments\GenericTemplate.cs" />
+    <Compile Include="API.Types\Attachments\ImagePayload.cs" />
+    <Compile Include="API.Types\Attachments\Parts\Address.cs" />
+    <Compile Include="API.Types\Attachments\Parts\GenericTemplateElement.cs" />
+    <Compile Include="API.Types\Attachments\Parts\MessageButton.cs" />
+    <Compile Include="API.Types\Attachments\Parts\ReceiptAdjustments.cs" />
+    <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateElement.cs" />
+    <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateSummary.cs" />
+    <Compile Include="API.Types\Attachments\ReceiptTemplate.cs" />
+    <Compile Include="API.Types\Attachments\TemplatePayload.cs" />
+    <Compile Include="API.Types\Message.cs" />
+    <Compile Include="API.Types\Recipient.cs" />
     <Compile Include="GeneralUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
