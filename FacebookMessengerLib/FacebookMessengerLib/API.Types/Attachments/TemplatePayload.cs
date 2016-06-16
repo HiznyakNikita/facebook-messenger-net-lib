@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,8 @@ namespace FacebookMessengerLib.API.Types.Attachments
 
     public abstract class TemplatePayload : IPayload
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty(PropertyName = "template_type", Required = Required.Always)]
         public TemplatePayloadType TemplateType { get; set; }
     }
 }

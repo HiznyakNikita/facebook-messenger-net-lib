@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,10 @@ namespace FacebookMessengerLib.API.Types.Attachments
 
     public class Attachment
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty(PropertyName = "type", Required = Required.Always)]
         public AttachmentType Type { get; set; }
+        [JsonProperty(PropertyName = "payload", Required = Required.Always)]
         public IPayload Payload { get; set; }
     }
 }
