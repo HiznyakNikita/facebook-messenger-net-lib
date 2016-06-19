@@ -63,6 +63,7 @@
     <Compile Include="API.Types\Message.cs" />
     <Compile Include="API.Types\Recipient.cs" />
     <Compile Include="GeneralUtils.cs" />
+    <Compile Include="MessengerAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

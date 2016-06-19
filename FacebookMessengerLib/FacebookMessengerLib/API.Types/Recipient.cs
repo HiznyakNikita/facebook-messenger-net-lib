@@ -18,5 +18,11 @@ namespace FacebookMessengerLib.API.Types
         public long Id { get; set; }
         [JsonProperty(PropertyName = "phone_number", Required = Required.Default)]
         public string PhoneNumber { get; set; }
+
+        public Recipient(long id, string phoneNumber = "")
+        {
+            Id = id;
+            PhoneNumber = phoneNumber;
+        }
     }
 }

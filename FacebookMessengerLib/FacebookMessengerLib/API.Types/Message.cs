@@ -11,9 +11,9 @@ namespace FacebookMessengerLib.API.Types
     [JsonObject]
     public class Message
     {
-        [JsonProperty(PropertyName = "text", Required = Required.Always)]
+        [JsonProperty(PropertyName = "text", Required = Required.Default)]
         public string Text { get; set; }
-        [JsonProperty(PropertyName = "attachment", Required = Required.Always)]
+        [JsonProperty(PropertyName = "attachment", Required = Required.Default)]
         public Attachment Attachment { get; set; }
     }
 }
