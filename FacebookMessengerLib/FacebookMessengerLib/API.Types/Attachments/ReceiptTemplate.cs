@@ -31,5 +31,10 @@ namespace FacebookMessengerLib.API.Types.Attachments
         public Address Address { get; set; }
         [JsonProperty(PropertyName = "adjustments", Required = Required.Always)]
         public IList<ReceiptAdjustments> Adjustments { get; set; }
+
+        public ReceiptTemplate()
+        {
+            TemplateType = TemplatePayloadType.Receipt;
+        }
     }
 }

@@ -21,5 +21,11 @@ namespace FacebookMessengerLib.API.Types.Attachments
         public AttachmentType Type { get; set; }
         [JsonProperty(PropertyName = "payload", Required = Required.Always)]
         public IPayload Payload { get; set; }
+
+        public Attachment(AttachmentType type, IPayload payload)
+        {
+            Type = type;
+            Payload = payload;
+        }
     }
 }

@@ -13,5 +13,11 @@ namespace FacebookMessengerLib.API.Types.Attachments
     {
         [JsonProperty(PropertyName = "elements", Required = Required.Always)]
         public IList<GenericTemplateElement> Elements { get; set; }
+
+        public GenericTemplate(List<GenericTemplateElement> elements)
+        {
+            Elements = elements;
+            TemplateType = TemplatePayloadType.Generic;
+        }
     }
 }
