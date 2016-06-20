@@ -62,5 +62,19 @@ namespace FacebookMessengerLib
 
             await _utils.SendWebRequestAsync<string>("", parameters);
         }
+
+        public async Task SendReceiptTemplateMessageAsync (long userId, ReceiptTemplate receipt)
+        {
+            Recipient recipient = new Recipient(userId);
+            Message message = new Message() { Attachment = new Attachment(AttachmentType.Template, receipt) };
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"recipient", recipient},
+                {"message", message}
+            };
+
+            await _utils.SendWebRequestAsync<string>("", parameters);
+        }
     }
 }

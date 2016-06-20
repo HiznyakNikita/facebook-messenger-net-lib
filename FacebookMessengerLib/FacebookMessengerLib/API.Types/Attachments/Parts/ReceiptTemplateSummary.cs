@@ -11,12 +11,12 @@ namespace FacebookMessengerLib.API.Types.Attachments.Parts
     public class ReceiptTemplateSummary
     {
         [JsonProperty(PropertyName = "subtotal", Required = Required.Always)]
-        public double Subtotal { get; set; }
+        public int Subtotal { get; set; }
         [JsonProperty(PropertyName = "shipping_cost", Required = Required.Always)]
-        public double ShippingCost { get; set; }
+        public int ShippingCost { get; set; }
         [JsonProperty(PropertyName = "total_tax", Required = Required.Always)]
-        public double TotalTax { get; set; }
+        public int TotalTax { get; set; }
         [JsonProperty(PropertyName = "total_cost", Required = Required.Always)]
-        public double TotalCost { get; set; }
+        public int TotalCost { get; set; }
     }
 }
