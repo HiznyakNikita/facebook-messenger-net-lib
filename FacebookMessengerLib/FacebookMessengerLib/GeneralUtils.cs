@@ -32,7 +32,12 @@ namespace FacebookMessengerLib
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(_baseUrl + _token);
-                var postData = JsonConvert.SerializeObject(parameters).ToLower();
+                var postData = JsonConvert.SerializeObject(parameters, Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore,
+                                DefaultValueHandling = DefaultValueHandling.Ignore 
+                            }).ToLower();
                 var data = Encoding.ASCII.GetBytes(postData);
                 request.Method = "POST";
                 request.ContentType = "application/json";

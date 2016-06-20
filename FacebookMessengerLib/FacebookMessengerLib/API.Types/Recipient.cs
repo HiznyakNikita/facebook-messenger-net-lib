@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace FacebookMessengerLib.API.Types
         [JsonProperty(PropertyName = "id", Required = Required.Default)]
         public long Id { get; set; }
         [JsonProperty(PropertyName = "phone_number", Required = Required.Default)]
+        [DefaultValue("")]
         public string PhoneNumber { get; set; }
 
         public Recipient(long id, string phoneNumber = "")
