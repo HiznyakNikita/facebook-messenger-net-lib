@@ -1,5 +1,6 @@
 ﻿using FacebookMessengerLib.API.Types;
 using FacebookMessengerLib.API.Types.Attachments;
+using FacebookMessengerLib.API.Types.Attachments.Parts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,20 @@ namespace FacebookMessengerLib
         {
             Recipient recipient = new Recipient(userId);
             Message message = new Message() { Attachment = new Attachment(AttachmentType.Template, new ButtonTemplate(text, buttons)) };
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"recipient", recipient},
+                {"message", message}
+            };
+
+            await _utils.SendWebRequestAsync<string>("", parameters);
+        }
+
+        public async Task SendGenericTemplateMessageAsync (long userId, List<GenericTemplateElement> elements)
+        {
+            Recipient recipient = new Recipient(userId);
+            Message message = new Message() { Attachment = new Attachment(AttachmentType.Template, new GenericTemplate(elements)) };
 
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
