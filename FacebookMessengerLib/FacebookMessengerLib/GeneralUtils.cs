@@ -1,4 +1,5 @@
-﻿using FacebookMessengerLib.API.Types;
+﻿using FacebookMessengerLib.API.Exceptions;
+using FacebookMessengerLib.API.Types;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,6 @@ namespace FacebookMessengerLib
             _token = token;
         }
 
-        //TODO: Use ApiResponse.Result as returned type
-        //Use custom types in operations
         public async Task<T> SendWebRequestAsync<T>(string method, Dictionary<string, object> parameters = null)
         {
             try
@@ -49,10 +48,10 @@ namespace FacebookMessengerLib
 
                 var response = (HttpWebResponse)(await request.GetResponseAsync());
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                var responseObject = JsonConvert.DeserializeObject<ApiResponse<T>>(responseString);
-
+                var responseObject = ParseResponseString<T>(responseString);
                 return responseObject.Result;
             }
+            //TODO catch non-general exception for Bad Requests
             catch (Exception e)
             {
                 int errorCode = GetServerApiErrorCode(e.Message);
@@ -62,6 +61,21 @@ namespace FacebookMessengerLib
             }
         }
 
+        private ApiResponse<T> ParseResponseString<T>(string responseString)
+        {
+            try
+            {
+                var responseObject = JsonConvert.DeserializeObject<ApiResponse<T>>(responseString);
+                return responseObject;
+            }
+            catch (JsonSerializationException)
+            {
+                var responseError = JsonConvert.DeserializeObject<ApiError>(responseString);
+                throw new ApiRequestException(responseError.Message, responseError);
+            }
+        }
+
+        //TODO delete after testing exception type of BadRequest and other non-typical server exceptions
         private int GetServerApiErrorCode(string serverErrorMessage)
         {
             if (serverErrorMessage.Contains("400"))
