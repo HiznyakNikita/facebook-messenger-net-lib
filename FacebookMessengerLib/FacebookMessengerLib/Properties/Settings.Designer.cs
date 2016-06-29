@@ -40,5 +40,17 @@ namespace FacebookMessengerLib.Properties {
                 return ((string)(this["BaseSettingsApiUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=")]
+        public string BaseSubscibeAppApiUrl {
+            get {
+                return ((string)(this["BaseSubscibeAppApiUrl"]));
+            }
+            set {
+                this["BaseSubscibeAppApiUrl"] = value;
+            }
+        }
     }
 }

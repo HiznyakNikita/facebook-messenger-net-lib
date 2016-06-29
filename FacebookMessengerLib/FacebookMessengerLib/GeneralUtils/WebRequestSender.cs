@@ -27,6 +27,7 @@ namespace FacebookMessengerLib.GeneralUtils
             _dataFormatter = new DataFormatter();
         }
 
+        //TODO delete method param if not used
         public async Task<T> SendWebRequestAsync<T>(string method, Dictionary<string, object> parameters = null)
         {
             try

@@ -39,6 +39,8 @@ namespace FacebookMessengerLib.GeneralUtils
                 return 0;
         }
 
+        //TODO if sending subscribeApp request get success: true response 
+        //what to do in this situation
         public ApiResponse<T> ParseResponseString<T>(string responseString)
         {
             try

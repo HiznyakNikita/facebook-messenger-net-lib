@@ -78,6 +78,12 @@ namespace FacebookMessengerLib
 
         #endregion
 
+        public async Task SubscibeAppToPage(string accessToken)
+        {
+            WebRequestSender subscribeRequestsSender = new WebRequestSender(Settings.Default.BaseSubscibeAppApiUrl, accessToken);
+            await subscribeRequestsSender.SendWebRequestAsync<string>("");
+        }
+
         private async Task SendApiMessagesParameters(long userId, Message message)
         {
             Recipient recipient = new Recipient(userId);
