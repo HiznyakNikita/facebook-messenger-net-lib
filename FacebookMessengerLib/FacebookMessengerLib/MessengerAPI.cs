@@ -24,6 +24,8 @@ namespace FacebookMessengerLib
             _settingsRequestsSender = new WebRequestSender(Settings.Default.BaseSettingsApiUrl, _token);
         }
 
+        #region Messages API methods
+
         public async Task SendTextMessageAsync(long userId, string text)
         {
             Message message = new Message() { Text = text };
@@ -48,6 +50,10 @@ namespace FacebookMessengerLib
             await SendApiMessagesParameters(userId, message);
         }
 
+        #endregion
+
+        #region Settings API methods
+
         public async Task SendWelcomeMessageAsync(WelcomeMessage welcomeMessage)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>()
@@ -58,6 +64,19 @@ namespace FacebookMessengerLib
             };
             await _settingsRequestsSender.SendWebRequestAsync<string>("", parameters);
         }
+
+        public async Task DeleteWelcomeMessageAsync()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"setting_type", "call_to_actions"},
+                {"thread_state", "new_thread"},
+                {"call_to_actions", new List<Message>() }
+            };
+            await _settingsRequestsSender.SendWebRequestAsync<string>("", parameters);
+        }
+
+        #endregion
 
         private async Task SendApiMessagesParameters(long userId, Message message)
         {
