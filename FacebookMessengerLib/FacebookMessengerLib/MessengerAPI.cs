@@ -78,6 +78,13 @@ namespace FacebookMessengerLib
 
         #endregion
 
+        public async Task GetUserProfileData(long userId)
+        {
+            string userProfileApiUrl = "https://graph.facebook.com/v2.6/" + userId.ToString() + "?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=";
+            WebRequestSender userProfileApiRequestsSender = new WebRequestSender(userProfileApiUrl, _token);
+            await userProfileApiRequestsSender.SendWebRequestAsync<string>("");
+        }
+
         public async Task SubscibeAppToPage(string accessToken)
         {
             WebRequestSender subscribeRequestsSender = new WebRequestSender(Settings.Default.BaseSubscibeAppApiUrl, accessToken);

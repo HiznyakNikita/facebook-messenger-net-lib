@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FacebookMessengerLib.API.Types
 {
-    public class User
+    public class UserProfile
     {
         [JsonProperty(PropertyName = "first_name", Required = Required.Default)]
         public string FirstName { get; set; }
