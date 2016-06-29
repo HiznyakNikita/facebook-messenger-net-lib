@@ -55,10 +55,19 @@ namespace FacebookMessengerLib
             }
             catch (Exception e)
             {
-                if (e.Message.Contains("400"))
-                    throw new ApiError("Bad Request", 400);
+                int errorCode = GetServerApiErrorCode(e.Message);
+                if (errorCode != 0)
+                    throw new ApiError(errorCode);
                 else throw;
             }
+        }
+
+        private int GetServerApiErrorCode(string serverErrorMessage)
+        {
+            if (serverErrorMessage.Contains("400"))
+                return 400;
+            else
+                return 0;
         }
     }
 }

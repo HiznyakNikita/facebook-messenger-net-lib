@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookMessengerLib", "FacebookMessengerLib\FacebookMessengerLib.csproj", "{280CF45A-8543-4681-8863-442BB1F59067}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookMessengerLib.Tests", "FacebookMessengerLib.Tests\FacebookMessengerLib.Tests.csproj", "{D8C1068B-363B-47FE-85B0-39BDEBE8308A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{280CF45A-8543-4681-8863-442BB1F59067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{280CF45A-8543-4681-8863-442BB1F59067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{280CF45A-8543-4681-8863-442BB1F59067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C1068B-363B-47FE-85B0-39BDEBE8308A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C1068B-363B-47FE-85B0-39BDEBE8308A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C1068B-363B-47FE-85B0-39BDEBE8308A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8C1068B-363B-47FE-85B0-39BDEBE8308A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

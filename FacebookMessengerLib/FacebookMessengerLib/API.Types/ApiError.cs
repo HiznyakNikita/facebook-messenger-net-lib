@@ -14,20 +14,37 @@ namespace FacebookMessengerLib.API.Types
     public class ApiError : Exception
     {
         [JsonProperty(PropertyName = "message", Required = Required.Always)]
-        public string Message { get; internal set; }
+        public string Message
+        {
+            get
+            {
+                return GetErrorMessage(ErrorCode);
+            }
+            internal set;
+        }
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
         public string Type { get; internal set; }
         [JsonProperty(PropertyName = "code", Required = Required.Always)]
-        public int Code { get; internal set; }
+        public int ErrorCode { get; internal set; }
 
         public ApiError()
         {
         }
 
-        public ApiError(string message, int code)
+        public ApiError(int errorCode)
         {
-            Message = message;
-            Code = code;
+            ErrorCode = errorCode;
+        }
+
+        private string GetErrorMessage(int errorCode)
+        {
+            switch (errorCode)
+            {
+                case 400:
+                    return "Server has an error Bad Request";
+                default:
+                    return "No errors!";
+            }
         }
     }
 }
