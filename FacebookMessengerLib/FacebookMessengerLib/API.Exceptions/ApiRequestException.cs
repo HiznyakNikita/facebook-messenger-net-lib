@@ -10,10 +10,17 @@ namespace FacebookMessengerLib.API.Exceptions
     public class ApiRequestException : Exception
     {
         public ApiError ApiError { get; set; }
+        public int ErrorCode { get; set; }
 
         public ApiRequestException(string message)
             : base(message)
         {
+        }
+
+        public ApiRequestException(string message, int errorCode)
+            : base(message)
+        {
+            ErrorCode = errorCode;
         }
 
         public ApiRequestException(string message, ApiError apiError) : base(message)

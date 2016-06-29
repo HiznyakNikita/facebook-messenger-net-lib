@@ -56,7 +56,7 @@ namespace FacebookMessengerLib
             {
                 int errorCode = GetServerApiErrorCode(e.Message);
                 if (errorCode != 0)
-                    throw new ApiError(errorCode);
+                    throw new ApiRequestException(e.Message, errorCode);
                 else throw;
             }
         }
