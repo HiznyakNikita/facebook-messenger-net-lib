@@ -36,7 +36,7 @@ namespace FacebookMessengerLib
                             new JsonSerializerSettings
                             {
                                 NullValueHandling = NullValueHandling.Ignore,
-                                DefaultValueHandling = DefaultValueHandling.Ignore 
+                                DefaultValueHandling = DefaultValueHandling.Ignore
                             }).ToLower();
                 var data = Encoding.ASCII.GetBytes(postData);
                 request.Method = "POST";
@@ -50,7 +50,7 @@ namespace FacebookMessengerLib
                 var response = (HttpWebResponse)(await request.GetResponseAsync());
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
                 var responseObject = JsonConvert.DeserializeObject<ApiResponse<T>>(responseString);
-                
+
                 return responseObject.Result;
             }
             catch (Exception e)
