@@ -28,7 +28,9 @@ namespace FacebookMessengerLib.GeneralUtils
         }
 
         //TODO delete method param if not used
-        public async Task<T> SendWebRequestAsync<T>(string method, Dictionary<string, object> parameters = null)
+        public async Task<T> SendWebRequestAsync<T>(
+            string method, 
+            Dictionary<string, object> parameters = null)
         {
             try
             {

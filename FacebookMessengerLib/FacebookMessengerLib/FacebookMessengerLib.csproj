@@ -62,6 +62,7 @@
     <Compile Include="API.Types\Attachments\TemplatePayload.cs" />
     <Compile Include="API.Types\Message.cs" />
     <Compile Include="API.Types\Recipient.cs" />
+    <Compile Include="API.Types\User.cs" />
     <Compile Include="API.Types\WelcomeMessage.cs" />
     <Compile Include="GeneralUtils\DataFormatter.cs" />
     <Compile Include="GeneralUtils\WebRequestSender.cs" />
