@@ -1,6 +1,7 @@
 ﻿using FacebookMessengerLib.API.Types;
 using FacebookMessengerLib.API.Types.Attachments;
 using FacebookMessengerLib.API.Types.Attachments.Parts;
+using FacebookMessengerLib.GeneralUtils;
 using FacebookMessengerLib.Properties;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,12 @@ namespace FacebookMessengerLib
     public class MessengerAPI
     {
         private string _token = "";
-        private GeneralUtils _utils;
+        private WebRequestSender _utils;
 
         public MessengerAPI(string token)
         {
             _token = token;
-            _utils = new GeneralUtils(Settings.Default.BaseApiUrl, _token);
+            _utils = new WebRequestSender(Settings.Default.BaseApiUrl, _token);
         }
 
         public async Task SendTextMessageAsync(long userId, string text)
