@@ -20,7 +20,10 @@ namespace FacebookMessengerLib.API.Types
             {
                 return GetErrorMessage(ErrorCode);
             }
-            internal set;
+            internal set
+            {
+                Message = value;
+            }
         }
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
         public string Type { get; internal set; }
