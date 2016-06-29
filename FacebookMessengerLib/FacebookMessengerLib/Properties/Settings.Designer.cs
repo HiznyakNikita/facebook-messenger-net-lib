@@ -26,9 +26,18 @@ namespace FacebookMessengerLib.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://graph.facebook.com/v2.6/me/messages?access_token=")]
-        public string BaseApiUrl {
+        public string BaseMessagesApiUrl {
             get {
-                return ((string)(this["BaseApiUrl"]));
+                return ((string)(this["BaseMessagesApiUrl"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://graph.facebook.com/v2.6/me/thread_settings?access_token=")]
+        public string BaseSettingsApiUrl {
+            get {
+                return ((string)(this["BaseSettingsApiUrl"]));
             }
         }
     }
