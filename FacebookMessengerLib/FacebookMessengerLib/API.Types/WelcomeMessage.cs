@@ -14,14 +14,14 @@ namespace FacebookMessengerLib.API.Types
         [JsonProperty(PropertyName = "thread_state", Required = Required.Always)]
         public string ThreadState { get; private set; }
         [JsonProperty(PropertyName = "call_to_actions", Required = Required.Always)]
-        public IList<Message> CallToActions { get; set; }
+        public IList<WelcomeMessageCallToAction> CallToActions { get; set; }
 
         public WelcomeMessage()
         {
             SettingType = "call_to_actions";
             ThreadState = "new_thread";
         }
-        public WelcomeMessage(IList<Message> callToActions)
+        public WelcomeMessage(IList<WelcomeMessageCallToAction> callToActions)
         {
             SettingType = "call_to_actions";
             ThreadState = "new_thread";

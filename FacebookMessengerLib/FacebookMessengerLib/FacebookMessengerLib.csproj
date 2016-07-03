@@ -64,6 +64,7 @@
     <Compile Include="API.Types\Recipient.cs" />
     <Compile Include="API.Types\UserProfile.cs" />
     <Compile Include="API.Types\WelcomeMessage.cs" />
+    <Compile Include="API.Types\WelcomeMessageCallToAction.cs" />
     <Compile Include="GeneralUtils\DataFormatter.cs" />
     <Compile Include="GeneralUtils\WebRequestSender.cs" />
     <Compile Include="MessengerAPI.cs" />
