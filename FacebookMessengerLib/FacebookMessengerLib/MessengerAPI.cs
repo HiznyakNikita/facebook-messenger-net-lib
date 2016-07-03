@@ -62,7 +62,7 @@ namespace FacebookMessengerLib
                 {"thread_state", welcomeMessage.ThreadState},
                 {"call_to_actions", welcomeMessage.CallToActions }
             };
-            await _settingsRequestsSender.SendWebRequestAsync<string>("", parameters);
+            await _settingsRequestsSender.SendWebRequestAsync<string>(parameters: parameters);
         }
 
         public async Task DeleteWelcomeMessageAsync()
@@ -73,22 +73,22 @@ namespace FacebookMessengerLib
                 {"thread_state", "new_thread"},
                 {"call_to_actions", new List<Message>() }
             };
-            await _settingsRequestsSender.SendWebRequestAsync<string>("", parameters);
+            await _settingsRequestsSender.SendWebRequestAsync<string>(parameters: parameters);
         }
 
         #endregion
 
         public async Task GetUserProfileData(long userId)
         {
-            string userProfileApiUrl = "https://graph.facebook.com/v2.6/" + userId.ToString() + "?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=";
+            string userProfileApiUrl = "https://graph.facebook.com/v2.6/" + userId.ToString() + "?fields=first_name,last_name,locale,timezone,gender&access_token=";
             WebRequestSender userProfileApiRequestsSender = new WebRequestSender(userProfileApiUrl, _token);
-            await userProfileApiRequestsSender.SendWebRequestAsync<string>("");
+            await userProfileApiRequestsSender.SendWebRequestAsync<string>("GET");
         }
 
         public async Task SubscibeAppToPage(string accessToken)
         {
             WebRequestSender subscribeRequestsSender = new WebRequestSender(Settings.Default.BaseSubscibeAppApiUrl, accessToken);
-            await subscribeRequestsSender.SendWebRequestAsync<string>("");
+            await subscribeRequestsSender.SendWebRequestAsync<string>();
         }
 
         private async Task SendApiMessagesParameters(long userId, Message message)
@@ -100,7 +100,7 @@ namespace FacebookMessengerLib
                 {"message", message}
             };
 
-            await _messagesRequestsSender.SendWebRequestAsync<string>("", parameters);
+            await _messagesRequestsSender.SendWebRequestAsync<string>(parameters: parameters);
         }
     }
 }

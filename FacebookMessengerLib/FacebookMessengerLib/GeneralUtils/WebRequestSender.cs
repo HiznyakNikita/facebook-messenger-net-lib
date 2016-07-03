@@ -27,14 +27,13 @@ namespace FacebookMessengerLib.GeneralUtils
             _dataFormatter = new DataFormatter();
         }
 
-        //TODO delete method param if not used
         public async Task<T> SendWebRequestAsync<T>(
-            string method, 
+            string method = "POST", 
             Dictionary<string, object> parameters = null)
         {
             try
             {
-                var request = CreateWebRequest(parameters);
+                var request = CreateWebRequest(parameters, method);
 
                 var response = (HttpWebResponse)(await request.GetResponseAsync());
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
@@ -51,17 +50,20 @@ namespace FacebookMessengerLib.GeneralUtils
             }
         }
 
-        private HttpWebRequest CreateWebRequest(Dictionary<string, object> parameters = null)
+        private HttpWebRequest CreateWebRequest(Dictionary<string, object> parameters = null, string method = "POST")
         {
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(_baseUrl + _token);
-                request.Method = "POST";
+                request.Method = method;
                 request.ContentType = "application/json";
-                var postData = _dataFormatter.FormWebRequestPostData(parameters);
-                request.ContentLength = postData.Length;
-                using (var stream = request.GetRequestStream())
-                    stream.Write(postData, 0, postData.Length);
+                if (method == "POST")
+                {
+                    var postData = _dataFormatter.FormWebRequestPostData(parameters);
+                    request.ContentLength = postData.Length;
+                    using (var stream = request.GetRequestStream())
+                        stream.Write(postData, 0, postData.Length);
+                }
 
                 return request;
             }
