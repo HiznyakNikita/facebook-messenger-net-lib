@@ -14,14 +14,13 @@ namespace FacebookMessengerLib
     public class MessengerAPI
     {
         private string _token = "";
-        private WebRequestSender _messagesRequestsSender;
-        private WebRequestSender _settingsRequestsSender;
+        private WebRequestSender _requestsSender;
 
         public MessengerAPI(string token)
         {
+            IHttpWebRequestFactory requestFactory = new HttpWebRequestFactory();
             _token = token;
-            _messagesRequestsSender = new WebRequestSender(Settings.Default.BaseMessagesApiUrl, _token);
-            _settingsRequestsSender = new WebRequestSender(Settings.Default.BaseSettingsApiUrl, _token);
+            _requestsSender = new WebRequestSender(requestFactory);
         }
 
         #region Messages API methods
@@ -62,7 +61,7 @@ namespace FacebookMessengerLib
                 {"thread_state", welcomeMessage.ThreadState},
                 {"call_to_actions", welcomeMessage.CallToActions }
             };
-            await _settingsRequestsSender.SendWebRequestAsync<string>(parameters: parameters);
+            await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseSettingsApiUrl + _token, parameters: parameters);
         }
 
         public async Task DeleteWelcomeMessageAsync()
@@ -73,22 +72,22 @@ namespace FacebookMessengerLib
                 {"thread_state", "new_thread"},
                 {"call_to_actions", new List<Message>() }
             };
-            await _settingsRequestsSender.SendWebRequestAsync<string>(parameters: parameters);
+            await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseSettingsApiUrl + _token, parameters: parameters);
         }
 
         #endregion
 
         public async Task GetUserProfileData(long userId)
         {
-            string userProfileApiUrl = "https://graph.facebook.com/v2.6/" + userId.ToString() + "?fields=first_name,last_name,locale,timezone,gender&access_token=";
-            WebRequestSender userProfileApiRequestsSender = new WebRequestSender(userProfileApiUrl, _token);
-            await userProfileApiRequestsSender.SendWebRequestAsync<string>("GET");
+            string userProfileApiUrl = String.Format(@"https://graph.facebook.com/v2.6/{0}?fields=first_name,last_name,locale,timezone,gender&access_token={1}", 
+                userId.ToString(), 
+                _token);
+            await _requestsSender.SendWebRequestAsync<string>(userProfileApiUrl, "GET");
         }
 
         public async Task SubscibeAppToPage(string accessToken)
         {
-            WebRequestSender subscribeRequestsSender = new WebRequestSender(Settings.Default.BaseSubscibeAppApiUrl, accessToken);
-            await subscribeRequestsSender.SendWebRequestAsync<string>();
+            await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseSubscibeAppApiUrl + accessToken);
         }
 
         private async Task SendApiMessagesParameters(long userId, Message message)
@@ -100,7 +99,7 @@ namespace FacebookMessengerLib
                 {"message", message}
             };
 
-            await _messagesRequestsSender.SendWebRequestAsync<string>(parameters: parameters);
+            await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseMessagesApiUrl + _token, parameters: parameters);
         }
     }
 }

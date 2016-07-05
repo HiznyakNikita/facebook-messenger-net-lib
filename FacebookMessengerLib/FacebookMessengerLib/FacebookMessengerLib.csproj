@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FacebookMessengerLib</RootNamespace>
     <AssemblyName>FacebookMessengerLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +67,8 @@
     <Compile Include="API.Types\WelcomeMessage.cs" />
     <Compile Include="API.Types\WelcomeMessageCallToAction.cs" />
     <Compile Include="GeneralUtils\DataFormatter.cs" />
+    <Compile Include="GeneralUtils\HttpWebRequestFactory.cs" />
+    <Compile Include="GeneralUtils\IHttpWebRequestFactory.cs" />
     <Compile Include="GeneralUtils\WebRequestSender.cs" />
     <Compile Include="MessengerAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

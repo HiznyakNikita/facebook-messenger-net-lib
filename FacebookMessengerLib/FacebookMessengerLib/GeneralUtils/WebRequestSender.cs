@@ -16,24 +16,22 @@ namespace FacebookMessengerLib.GeneralUtils
     /// </summary>
     public class WebRequestSender
     {
-        private string _baseUrl = "";
-        private string _token = "";
         private DataFormatter _dataFormatter;
+        private IHttpWebRequestFactory _requestFactory;
 
-        public WebRequestSender(string baseUrl, string token)
+        public WebRequestSender(IHttpWebRequestFactory factory)
         {
-            _baseUrl = baseUrl;
-            _token = token;
             _dataFormatter = new DataFormatter();
+            _requestFactory = factory;
         }
 
-        public async Task<T> SendWebRequestAsync<T>(
+        public async Task<T> SendWebRequestAsync<T>(string url,
             string method = "POST", 
             Dictionary<string, object> parameters = null)
         {
             try
             {
-                var request = CreateWebRequest(parameters, method);
+                var request = _requestFactory.Create(url, parameters, method);
 
                 var response = (HttpWebResponse)(await request.GetResponseAsync());
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
@@ -47,29 +45,6 @@ namespace FacebookMessengerLib.GeneralUtils
                 if (errorCode != 0)
                     throw new ApiRequestException(e.Message, errorCode);
                 else throw;
-            }
-        }
-
-        private HttpWebRequest CreateWebRequest(Dictionary<string, object> parameters = null, string method = "POST")
-        {
-            try
-            {
-                var request = (HttpWebRequest)WebRequest.Create(_baseUrl + _token);
-                request.Method = method;
-                request.ContentType = "application/json";
-                if (method == "POST")
-                {
-                    var postData = _dataFormatter.SerializeAndGetBytesOfWebRequestPostData(parameters);
-                    request.ContentLength = postData.Length;
-                    using (var stream = request.GetRequestStream())
-                        stream.Write(postData, 0, postData.Length);
-                }
-
-                return request;
-            }
-            catch(Exception e)
-            {
-                throw e;
             }
         }
     }
