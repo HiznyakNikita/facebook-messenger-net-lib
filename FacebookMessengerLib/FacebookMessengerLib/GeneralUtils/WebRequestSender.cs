@@ -59,7 +59,7 @@ namespace FacebookMessengerLib.GeneralUtils
                 request.ContentType = "application/json";
                 if (method == "POST")
                 {
-                    var postData = _dataFormatter.FormWebRequestPostData(parameters);
+                    var postData = _dataFormatter.SerializeAndGetBytesOfWebRequestPostData(parameters);
                     request.ContentLength = postData.Length;
                     using (var stream = request.GetRequestStream())
                         stream.Write(postData, 0, postData.Length);
