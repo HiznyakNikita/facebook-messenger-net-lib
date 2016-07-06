@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FacebookMessengerLib</RootNamespace>
     <AssemblyName>FacebookMessengerLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +45,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API.Exceptions\ApiRequestException.cs" />
+    <Compile Include="API.Types\ApiError.cs" />
+    <Compile Include="API.Types\ApiResponse.cs" />
+    <Compile Include="API.Types\Attachments\Attachment.cs" />
+    <Compile Include="API.Types\Attachments\Abstract\IPayload.cs" />
+    <Compile Include="API.Types\Attachments\ButtonTemplate.cs" />
+    <Compile Include="API.Types\Attachments\GenericTemplate.cs" />
+    <Compile Include="API.Types\Attachments\ImagePayload.cs" />
+    <Compile Include="API.Types\Attachments\Parts\Address.cs" />
+    <Compile Include="API.Types\Attachments\Parts\GenericTemplateElement.cs" />
+    <Compile Include="API.Types\Attachments\Parts\MessageButton.cs" />
+    <Compile Include="API.Types\Attachments\Parts\ReceiptAdjustments.cs" />
+    <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateElement.cs" />
+    <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateSummary.cs" />
+    <Compile Include="API.Types\Attachments\ReceiptTemplate.cs" />
+    <Compile Include="API.Types\Attachments\TemplatePayload.cs" />
+    <Compile Include="API.Types\Message.cs" />
+    <Compile Include="API.Types\Recipient.cs" />
+    <Compile Include="API.Types\UserProfile.cs" />
+    <Compile Include="API.Types\WelcomeMessage.cs" />
+    <Compile Include="API.Types\WelcomeMessageCallToAction.cs" />
+    <Compile Include="GeneralUtils\DataFormatter.cs" />
+    <Compile Include="GeneralUtils\HttpWebRequestFactory.cs" />
+    <Compile Include="GeneralUtils\IHttpWebRequestFactory.cs" />
+    <Compile Include="GeneralUtils\WebRequestSender.cs" />
+    <Compile Include="MessengerAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

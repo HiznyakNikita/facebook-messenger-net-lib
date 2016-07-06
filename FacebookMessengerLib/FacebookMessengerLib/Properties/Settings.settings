@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FacebookMessengerLib.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BaseMessagesApiUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://graph.facebook.com/v2.6/me/messages?access_token=</Value>
+    </Setting>
+    <Setting Name="BaseSettingsApiUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://graph.facebook.com/v2.6/me/thread_settings?access_token=</Value>
+    </Setting>
+    <Setting Name="BaseSubscibeAppApiUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
