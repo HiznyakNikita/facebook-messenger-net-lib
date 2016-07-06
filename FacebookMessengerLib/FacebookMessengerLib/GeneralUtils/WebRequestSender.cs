@@ -42,9 +42,7 @@ namespace FacebookMessengerLib.GeneralUtils
             catch (Exception e)
             {
                 int errorCode = _dataFormatter.FormServerApiErrorCode(e.Message);
-                if (errorCode != 0)
-                    throw new ApiRequestException(e.Message, errorCode);
-                else throw;
+                throw new ApiRequestException(e.Message, errorCode);
             }
         }
     }
