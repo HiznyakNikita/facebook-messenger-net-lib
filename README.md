@@ -2,5 +2,5 @@
 
 
 # facebook-messenger-net-lib
-.Net library for facebook messenger API
+C# library to talk to facebook messenger API
 
