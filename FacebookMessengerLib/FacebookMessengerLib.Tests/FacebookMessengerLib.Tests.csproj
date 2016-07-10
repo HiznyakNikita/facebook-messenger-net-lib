@@ -63,6 +63,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ApiTest.cs" />
     <Compile Include="DataFormatterTest.cs" />
     <Compile Include="HttpWebRequestFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

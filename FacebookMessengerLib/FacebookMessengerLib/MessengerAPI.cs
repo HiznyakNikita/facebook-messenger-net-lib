@@ -20,9 +20,9 @@ namespace FacebookMessengerLib
         /// Class whih represents API methods of FB Messenger
         /// </summary>
         /// <param name="token">access_token of application</param>
-        public MessengerAPI(string token)
+        public MessengerAPI(string token, IHttpWebRequestFactory httpRequestFactory)
         {
-            IHttpWebRequestFactory requestFactory = new HttpWebRequestFactory();
+            IHttpWebRequestFactory requestFactory = httpRequestFactory;
             _token = token;
             _requestsSender = new WebRequestSender(requestFactory);
         }
@@ -38,7 +38,7 @@ namespace FacebookMessengerLib
         public async Task SendTextMessageAsync(long userId, string text)
         {
             Message message = new Message() { Text = text };
-            await SendApiMessagesParameters(userId, message);
+            await SendApiMessagesParametersAsync(userId, message);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace FacebookMessengerLib
         public async Task SendButtonTemplateMessageAsync(long userId, string text, List<MessageButton> buttons)
         {
             Message message = new Message() { Attachment = new Attachment(AttachmentType.Template, new ButtonTemplate(text, buttons)) };
-            await SendApiMessagesParameters(userId, message);
+            await SendApiMessagesParametersAsync(userId, message);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace FacebookMessengerLib
         public async Task SendGenericTemplateMessageAsync(long userId, List<GenericTemplateElement> elements)
         {
             Message message = new Message() { Attachment = new Attachment(AttachmentType.Template, new GenericTemplate(elements)) };
-            await SendApiMessagesParameters(userId, message);
+            await SendApiMessagesParametersAsync(userId, message);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace FacebookMessengerLib
         public async Task SendReceiptTemplateMessageAsync(long userId, ReceiptTemplate receipt)
         {
             Message message = new Message() { Attachment = new Attachment(AttachmentType.Template, receipt) };
-            await SendApiMessagesParameters(userId, message);
+            await SendApiMessagesParametersAsync(userId, message);
         }
 
         #endregion
@@ -106,7 +106,7 @@ namespace FacebookMessengerLib
 
         #endregion
 
-        public async Task GetUserProfileData(long userId)
+        public async Task GetUserProfileDataAsync(long userId)
         {
             string userProfileApiUrl = String.Format(@"https://graph.facebook.com/v2.6/{0}?fields=first_name,last_name,locale,timezone,gender&access_token={1}", 
                 userId.ToString(), 
@@ -119,12 +119,12 @@ namespace FacebookMessengerLib
         /// </summary>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public async Task SubscibeAppToPage(string accessToken)
+        public async Task SubscibeAppToPageAsync(string accessToken)
         {
             await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseSubscibeAppApiUrl + accessToken);
         }
 
-        private async Task SendApiMessagesParameters(long userId, Message message)
+        private async Task SendApiMessagesParametersAsync(long userId, Message message)
         {
             Recipient recipient = new Recipient(userId);
             Dictionary<string, object> parameters = new Dictionary<string, object>()
