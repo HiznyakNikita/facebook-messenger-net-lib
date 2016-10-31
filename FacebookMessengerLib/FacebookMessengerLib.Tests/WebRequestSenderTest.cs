@@ -59,7 +59,7 @@ namespace FacebookMessengerLib.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ApiRequestException))]
-        public async Task SendWebRequestAsync_SendRequestWithWrongUrl_ThrowAnyException()
+        public async Task SendWebRequestAsync_SendRequestWithWrongUrl_ThrowsApiRequestExceptionException()
         {
             var response = new Mock<WebResponse>();
             response.Setup(c => c.GetResponseStream()).Returns(_responseStream);
@@ -83,7 +83,7 @@ namespace FacebookMessengerLib.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ApiRequestException))]
-        public async Task SendWebRequestAsync_SendWrongRequest_ThrowBadRequestException()
+        public async Task SendWebRequestAsync_SendWrongRequest_ThrowsApiRequestExceptionException()
         {
             var response = new Mock<HttpWebResponse>();
             response.Setup(c => c.GetResponseStream()).Throws(new Exception("Bad Request: 400"));

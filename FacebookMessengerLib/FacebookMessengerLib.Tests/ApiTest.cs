@@ -33,7 +33,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void SendTextMessageAsync_Test()
+        public void SendTextMessageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SendTextMessageAsync(123, "test");
 
@@ -41,7 +41,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void SendButtonTemplateMessageAsync_Test()
+        public void SendButtonTemplateMessageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SendButtonTemplateMessageAsync(123, "test", new List<API.Types.Attachments.MessageButton>()
                 {
@@ -52,7 +52,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void SendGenericTemplateMessageAsync_Test()
+        public void SendGenericTemplateMessageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SendGenericTemplateMessageAsync(123, new List<API.Types.Attachments.Parts.GenericTemplateElement>()
                 {
@@ -68,7 +68,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void SendReceiptTemplateMessageAsync_Test()
+        public void SendReceiptTemplateMessageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SendReceiptTemplateMessageAsync(123, new API.Types.Attachments.ReceiptTemplate(
                 "recipient",
@@ -85,7 +85,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void SendWelcomeMessageAsync_Test()
+        public void SendWelcomeMessageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SendWelcomeMessageAsync(new API.Types.WelcomeMessage());
 
@@ -93,7 +93,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void DeleteWelcomeMessageAsync_Test()
+        public void DeleteWelcomeMessageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SendWelcomeMessageAsync(new API.Types.WelcomeMessage());
 
@@ -101,7 +101,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void GetUserProfileDataAsync_Test()
+        public void GetUserProfileDataAsync_CorrectGetResponseAsyncCalled()
         {
             _api.GetUserProfileDataAsync(12);
 
@@ -109,7 +109,7 @@ namespace FacebookMessengerLib.Tests
         }
 
         [TestMethod]
-        public void SubscibeAppToPageAsync_Test()
+        public void SubscibeAppToPageAsync_CorrectGetResponseAsyncCalled()
         {
             _api.SubscibeAppToPageAsync("ttttt");
 
