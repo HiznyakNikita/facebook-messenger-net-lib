@@ -1,4 +1,5 @@
 ﻿using FacebookMessengerLib.API.Types.Attachments;
+using FacebookMessengerLib.API.Types.Attachments.Parts;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace FacebookMessengerLib.API.Types
         public string Text { get; set; }
         [JsonProperty(PropertyName = "attachment", Required = Required.Default)]
         public Attachment Attachment { get; set; }
+        [JsonProperty(PropertyName = "quick_replies", Required = Required.Default)]
+        public IList<QuickReply> QuickReplies { get; set; }
     }
 }

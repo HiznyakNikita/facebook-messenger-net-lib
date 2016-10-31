@@ -61,6 +61,7 @@
     <Compile Include="API.Types\Attachments\Parts\MessageButton.cs" />
     <Compile Include="API.Types\Attachments\Parts\PaymentSummary.cs" />
     <Compile Include="API.Types\Attachments\Parts\PricelistItem.cs" />
+    <Compile Include="API.Types\Attachments\Parts\QuickReply.cs" />
     <Compile Include="API.Types\Attachments\Parts\ReceiptAdjustments.cs" />
     <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateElement.cs" />
     <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateSummary.cs" />
