@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FacebookMessengerLib</RootNamespace>
     <AssemblyName>FacebookMessengerLib</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,10 +30,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,8 +56,11 @@
     <Compile Include="API.Types\Attachments\GenericTemplate.cs" />
     <Compile Include="API.Types\Attachments\ImagePayload.cs" />
     <Compile Include="API.Types\Attachments\Parts\Address.cs" />
+    <Compile Include="API.Types\Attachments\Parts\BuyButton.cs" />
     <Compile Include="API.Types\Attachments\Parts\GenericTemplateElement.cs" />
     <Compile Include="API.Types\Attachments\Parts\MessageButton.cs" />
+    <Compile Include="API.Types\Attachments\Parts\PaymentSummary.cs" />
+    <Compile Include="API.Types\Attachments\Parts\PricelistItem.cs" />
     <Compile Include="API.Types\Attachments\Parts\ReceiptAdjustments.cs" />
     <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateElement.cs" />
     <Compile Include="API.Types\Attachments\Parts\ReceiptTemplateSummary.cs" />

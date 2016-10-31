@@ -38,7 +38,6 @@ namespace FacebookMessengerLib.GeneralUtils
                 var responseObject = _dataFormatter.ParseResponseString<T>(responseString);
                 return responseObject.Result;
             }
-            //TODO catch non-general exception for Bad Requests
             catch (Exception e)
             {
                 int errorCode = _dataFormatter.FormServerApiErrorCode(e.Message);

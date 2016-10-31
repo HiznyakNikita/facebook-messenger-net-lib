@@ -14,7 +14,10 @@ namespace FacebookMessengerLib.API.Types.Attachments
     public enum MessageButtonType
     {
         Web_Url,
-        Postback
+        Postback,
+        PhoneNumber,
+        Element_Share,
+        Payment
     }
 
     [JsonObject]

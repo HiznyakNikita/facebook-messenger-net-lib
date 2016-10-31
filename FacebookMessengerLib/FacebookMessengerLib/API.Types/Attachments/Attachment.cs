@@ -11,6 +11,9 @@ namespace FacebookMessengerLib.API.Types.Attachments
     public enum AttachmentType
     {
         Image,
+        Audio,
+        Video,
+        File,
         Template
     }
 
