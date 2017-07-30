@@ -43,8 +43,20 @@ namespace FacebookMessengerLib
         /// <returns></returns>
         public async Task SendTextMessageAsync(long userId, string text)
         {
-            Message message = new Message() { Text = text };
+            var message = new Message() { Text = text };
             await SendApiMessagesParametersAsync(userId, message);
+        }
+
+        /// <summary>
+        /// Method for sending text message to user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public async Task SendSenderActionAsync(long userId, string senderAction)
+        {
+            var senderActionObj = new SenderAction() { ActionType = senderAction };
+            await SendApiSenderActionParametersAsync(userId, senderActionObj);
         }
 
         /// <summary>
@@ -137,6 +149,18 @@ namespace FacebookMessengerLib
             {
                 {"recipient", recipient},
                 {"message", message}
+            };
+
+            await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseMessagesApiUrl + _token, parameters: parameters);
+        }
+
+        private async Task SendApiSenderActionParametersAsync(long userId, SenderAction senderAction)
+        {
+            Recipient recipient = new Recipient(userId);
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"recipient", recipient},
+                {"sender_action", senderAction.ActionType}
             };
 
             await _requestsSender.SendWebRequestAsync<string>(Settings.Default.BaseMessagesApiUrl + _token, parameters: parameters);

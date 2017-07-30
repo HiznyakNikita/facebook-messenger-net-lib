@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.Exceptions\ApiRequestException.cs" />
+    <Compile Include="API.Types\SenderAction.cs" />
     <Compile Include="API.Types\ApiError.cs" />
     <Compile Include="API.Types\ApiResponse.cs" />
     <Compile Include="API.Types\Attachments\Attachment.cs" />
