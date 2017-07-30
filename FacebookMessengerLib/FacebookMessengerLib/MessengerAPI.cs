@@ -20,9 +20,15 @@ namespace FacebookMessengerLib
         /// Class whih represents API methods of FB Messenger
         /// </summary>
         /// <param name="token">access_token of application</param>
-        public MessengerAPI(string token, IHttpWebRequestFactory httpRequestFactory)
+        public MessengerAPI(string token, IHttpWebRequestFactory httpRequestFactory = null)
         {
-            IHttpWebRequestFactory requestFactory = httpRequestFactory;
+            if (httpRequestFactory == null)
+            {
+                httpRequestFactory = new HttpWebRequestFactory();
+            }
+
+            var requestFactory = httpRequestFactory;
+
             _token = token;
             _requestsSender = new WebRequestSender(requestFactory);
         }
