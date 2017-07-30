@@ -36,7 +36,7 @@ namespace FacebookMessengerLib.Tests
             var dictFromFormattedData = JsonConvert.DeserializeObject<Dictionary<string,Message>>(formattedData);
 
             Assert.AreEqual(1, dictFromFormattedData.Count);
-            Assert.AreEqual("testtext", ((Message)dictFromFormattedData["message"]).Text);
+            Assert.AreEqual("TestText", ((Message)dictFromFormattedData["message"]).Text);
         }
 
         [TestMethod]
