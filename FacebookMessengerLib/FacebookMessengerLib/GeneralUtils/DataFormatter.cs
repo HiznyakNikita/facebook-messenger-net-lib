@@ -14,7 +14,7 @@ namespace FacebookMessengerLib.GeneralUtils
         public byte[] SerializeAndGetBytesOfWebRequestPostData(Dictionary<string, object> parameters = null)
         {
             var postData = SerializeWebRequestParams(parameters);
-            var data = Encoding.ASCII.GetBytes(postData);
+            var data = Encoding.UTF8.GetBytes(postData);
             return data;
         }
 
@@ -22,9 +22,11 @@ namespace FacebookMessengerLib.GeneralUtils
         public int FormServerApiErrorCode(string serverErrorMessage)
         {
             if (serverErrorMessage.Contains("400"))
+            {
                 return 400;
-            else
-                return 0;
+            }
+
+            return 0;
         }
 
         //TODO if sending subscribeApp request get success: true response 
@@ -44,12 +46,14 @@ namespace FacebookMessengerLib.GeneralUtils
 
         private string SerializeWebRequestParams(Dictionary<string, object> parameters)
         {
-            var postData = JsonConvert.SerializeObject(parameters, Newtonsoft.Json.Formatting.None,
-                            new JsonSerializerSettings
-                            {
-                                NullValueHandling = NullValueHandling.Ignore,
-                                DefaultValueHandling = DefaultValueHandling.Ignore
-                            }).ToLower();
+            var serializerSettings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
+            };
+
+            var postData = JsonConvert.SerializeObject(parameters, Newtonsoft.Json.Formatting.None, serializerSettings);
+
             return postData;
         }
     }

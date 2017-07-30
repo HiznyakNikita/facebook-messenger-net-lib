@@ -22,7 +22,7 @@ namespace FacebookMessengerLib.GeneralUtils
             {
                 var request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = method;
-                request.ContentType = "application/json";
+                request.ContentType = "application/json; charset=utf-8";
                 if (method == "POST")
                 {
                     var postData = _dataFormatter.SerializeAndGetBytesOfWebRequestPostData(parameters);
